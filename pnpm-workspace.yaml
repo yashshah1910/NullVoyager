@@ -1,0 +1,8 @@
+onlyBuiltDependencies:
+  - '@nullshot/agent'
+  - '@nullshot/cli'
+  - '@nullshot/mcp'
+  - core-js-pure
+  - esbuild
+  - sharp
+  - workerd
