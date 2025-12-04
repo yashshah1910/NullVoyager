@@ -1,3 +1,6 @@
+packages:
+  - 'frontend'
+
 onlyBuiltDependencies:
   - '@nullshot/agent'
   - '@nullshot/cli'
