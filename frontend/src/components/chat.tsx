@@ -17,6 +17,7 @@ export function Chat() {
   const { messages, input, handleInputChange, handleSubmit, isLoading, reload, stop } =
     useChat({
       api: `${API_URL}/agent/chat/${sessionId}`,
+      streamProtocol: "text",
       onError: (error) => {
         console.error("Chat error:", error);
       },
