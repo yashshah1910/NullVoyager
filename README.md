@@ -249,16 +249,6 @@ POST /agent/chat/:sessionId?
 
 ---
 
-## 🏆 Hackathon Goals Achieved
-
-✅ **AI Agent Innovation**: Multi-phase travel planning with stateful conversations  
-✅ **NullShot Framework**: Built entirely on `@nullshot/agent` and `AiSdkAgent`  
-✅ **MCP Tools Integration**: Custom tools for destinations, flights, and hotels  
-✅ **Web3 Ready**: Cloudflare Workers infrastructure for decentralized deployment  
-✅ **Real-World Utility**: Practical application solving travel planning challenges
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
