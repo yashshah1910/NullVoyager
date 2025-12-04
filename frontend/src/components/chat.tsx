@@ -2,7 +2,7 @@
 
 import { useChat } from "@ai-sdk/react";
 import { useEffect, useRef, useState } from "react";
-import { Send, Loader2, Sparkles, RotateCcw } from "lucide-react";
+import { Send, Loader2, Sparkles, RotateCcw, Plane } from "lucide-react";
 import { ChatMessage } from "./chat-message";
 import { WelcomeScreen } from "./welcome-screen";
 import { cn } from "@/lib/utils";
@@ -79,12 +79,16 @@ export function Chat() {
               ))}
               {isLoading && messages[messages.length - 1]?.role === "user" && (
                 <div className="flex items-start gap-4 message-fade-in">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-dark-accent">
-                    <Sparkles className="h-4 w-4 text-white" />
+                  <div className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-dark-accent via-emerald-500 to-teal-400">
+                    <Plane className="h-4 w-4 text-white" />
                   </div>
-                  <div className="flex items-center gap-2 pt-1">
-                    <Loader2 className="h-4 w-4 animate-spin text-dark-text-muted" />
-                    <span className="text-sm text-dark-text-muted">Thinking...</span>
+                  <div className="flex items-center gap-3 pt-1.5">
+                    <div className="flex items-center gap-1">
+                      <div className="h-2 w-2 rounded-full bg-dark-accent animate-bounce [animation-delay:-0.3s]" />
+                      <div className="h-2 w-2 rounded-full bg-dark-accent animate-bounce [animation-delay:-0.15s]" />
+                      <div className="h-2 w-2 rounded-full bg-dark-accent animate-bounce" />
+                    </div>
+                    <span className="text-sm text-dark-text-muted">Planning your journey...</span>
                   </div>
                 </div>
               )}
@@ -95,28 +99,28 @@ export function Chat() {
       </div>
 
       {/* Input Area */}
-      <div className="border-t border-dark-border bg-dark-bg p-4">
+      <div className="border-t border-dark-border bg-dark-bg/80 backdrop-blur-xl p-4">
         <div className="mx-auto max-w-3xl">
           <form onSubmit={handleSubmit} className="relative">
-            <div className="relative flex items-end rounded-2xl border border-dark-border bg-dark-bg-secondary focus-within:border-dark-text-muted transition-colors">
+            <div className="relative flex items-end rounded-2xl border border-dark-border bg-dark-bg-secondary focus-within:border-dark-accent/50 focus-within:shadow-lg focus-within:shadow-dark-accent/5 transition-all duration-300">
               <textarea
                 ref={inputRef}
                 value={input}
                 onChange={handleTextareaChange}
                 onKeyDown={handleKeyDown}
-                placeholder="Plan your next adventure..."
-                className="max-h-[200px] min-h-[52px] w-full resize-none bg-transparent px-4 py-3.5 pr-24 text-dark-text placeholder-dark-text-muted focus:outline-none"
+                placeholder="Where would you like to travel? ✈️"
+                className="max-h-[200px] min-h-[56px] w-full resize-none bg-transparent px-4 py-4 pr-24 text-dark-text placeholder-dark-text-muted focus:outline-none"
                 rows={1}
                 disabled={isLoading}
               />
-              <div className="absolute bottom-2 right-2 flex items-center gap-1">
+              <div className="absolute bottom-3 right-3 flex items-center gap-1.5">
                 {messages.length > 0 && (
                   <button
                     type="button"
                     onClick={() => reload()}
                     disabled={isLoading}
                     className={cn(
-                      "rounded-lg p-2 transition-colors",
+                      "rounded-lg p-2 transition-all duration-200",
                       "text-dark-text-muted hover:text-dark-text hover:bg-dark-bg-tertiary",
                       "disabled:opacity-50 disabled:cursor-not-allowed"
                     )}
@@ -129,9 +133,9 @@ export function Chat() {
                   type="submit"
                   disabled={!input.trim() || isLoading}
                   className={cn(
-                    "rounded-lg p-2 transition-colors",
+                    "rounded-xl p-2.5 transition-all duration-200",
                     input.trim() && !isLoading
-                      ? "bg-dark-accent text-white hover:bg-dark-accent-hover"
+                      ? "bg-gradient-to-r from-dark-accent to-emerald-500 text-white shadow-lg shadow-dark-accent/25 hover:shadow-dark-accent/40 hover:scale-105"
                       : "text-dark-text-muted bg-dark-bg-tertiary cursor-not-allowed"
                   )}
                 >
@@ -144,8 +148,8 @@ export function Chat() {
               </div>
             </div>
           </form>
-          <p className="mt-2 text-center text-xs text-dark-text-muted">
-            NullVoyager can make mistakes. Consider checking important information.
+          <p className="mt-3 text-center text-xs text-dark-text-muted">
+            NullVoyager is powered by <a href="https://nullshot.ai" target="_blank" rel="noopener noreferrer" className="text-dark-accent hover:underline">NullShot</a> • Built for NullShot Hacks S0
           </p>
         </div>
       </div>
