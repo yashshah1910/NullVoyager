@@ -26,6 +26,9 @@ importers:
       mcp-template:
         specifier: github:null-shot/typescript-mcp-template
         version: https://codeload.github.com/null-shot/typescript-mcp-template/tar.gz/22d3cf69184ed66872279e21e134eb92af29dc83
+      zod:
+        specifier: 3.25.76
+        version: 3.25.76
     devDependencies:
       '@nullshot/cli':
         specifier: ^0.2.5

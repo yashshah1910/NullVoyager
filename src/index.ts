@@ -1,12 +1,16 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { ToolboxService } from "@nullshot/agent";
-import { stepCountIs, type LanguageModel, type Provider } from "ai";
+import { stepCountIs, tool, type LanguageModel, type Provider } from "ai";
 import { createAnthropic } from "@ai-sdk/anthropic";
 import { AiSdkAgent, AIUISDKMessage } from "@nullshot/agent";
 import mcpConfig from "../mcp.json";
 import { createOpenAI } from "@ai-sdk/openai";
 import type { VoyagerState, AgentMode } from "./types";
+import { z } from "zod";
+import { createSuggestDestinationsTool } from "./tools/destinations";
+import { createSearchFlightsTool } from "./tools/flights";
+import { createSearchHotelsTool } from "./tools/hotels";
 
 // Define environment bindings interface for TypeScript so env.AI_PROVIDER_API_KEY and other bindings are recognized
 declare global {
@@ -15,6 +19,10 @@ declare global {
     AI_PROVIDER: "openai" | "anthropic";
     AI_PROVIDER_API_KEY: string;
     MODEL_ID: string;
+    UNSPLASH_ACCESS_KEY?: string;
+    AMADEUS_CLIENT_ID?: string;
+    AMADEUS_CLIENT_SECRET?: string;
+    GOOGLE_PLACES_API_KEY?: string;
   }
 }
 
@@ -181,9 +189,19 @@ export class TravelConciergeAgent extends AiSdkAgent<Env> {
     // Generate dynamic system prompt based on current state
     const systemPrompt = getSystemPrompt(voyagerState);
 
+    // Define travel tools for the agent
+    const travelTools = {
+      suggest_destinations: createSuggestDestinationsTool(this.env.UNSPLASH_ACCESS_KEY),
+
+      search_flights: createSearchFlightsTool(this.env),
+
+      search_hotels: createSearchHotelsTool(this.env),
+    };
+
     // Use the protected streamTextWithMessages method - model is handled automatically by the agent
     const result = await this.streamTextWithMessages(sessionId, messages.messages, {
       system: systemPrompt,
+      tools: travelTools,
       maxSteps: 10,
       stopWhen: stepCountIs(10),
       // Enable MCP tools from imported mcp.json

@@ -16,7 +16,8 @@
     "@nullshot/agent": "^0.3.4",
     "ai": "^5.0.27",
     "hono": "^4.7.11",
-    "mcp-template": "github:null-shot/typescript-mcp-template"
+    "mcp-template": "github:null-shot/typescript-mcp-template",
+    "zod": "3.25.76"
   },
   "devDependencies": {
     "@nullshot/cli": "^0.2.5",

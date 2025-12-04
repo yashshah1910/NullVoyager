@@ -13,13 +13,22 @@
       "new_sqlite_classes": [
         "SimplePromptAgent"
       ]
+    },
+    {
+      "tag": "v2",
+      "renamed_classes": [
+        {
+          "from": "SimplePromptAgent",
+          "to": "TravelConciergeAgent"
+        }
+      ]
     }
   ],
   "durable_objects": {
     "bindings": [
       {
         "name": "AGENT",
-        "class_name": "SimplePromptAgent"
+        "class_name": "TravelConciergeAgent"
       }
     ]
   },
