@@ -216,6 +216,44 @@ NullVoyager/
 
 ---
 
+### Screenshots
+
+<details>
+<summary>Click to view screenshots</summary>
+
+**Welcome Screen**
+
+<img width="1512" height="857" alt="Screenshot 2025-12-05 at 9 03 07 AM" src="https://github.com/user-attachments/assets/c5c5377c-86d8-48b3-b50f-ff0f218ee5ee" />
+
+- Modern dark UI with suggested prompts
+- AI-powered travel concierge branding
+
+**Destination Suggestions**
+
+<img width="1512" height="856" alt="Screenshot 2025-12-05 at 9 04 32 AM" src="https://github.com/user-attachments/assets/a551e348-d926-4ad8-9acb-b252ea6d915e" />
+
+
+- Beautiful destination cards with real images from Unsplash
+- Wikipedia-sourced descriptions
+
+**Flight Search Results**
+
+<img width="1512" height="856" alt="Screenshot 2025-12-05 at 9 05 10 AM" src="https://github.com/user-attachments/assets/74b9cc82-bc6d-4b6e-97e6-77741749a127" />
+
+- Real-time pricing via Amadeus API
+- Airline, duration, and route information
+
+**Hotel Recommendations**
+
+<img width="1512" height="855" alt="Screenshot 2025-12-05 at 9 05 39 AM" src="https://github.com/user-attachments/assets/a3dc444a-bdef-49c4-8495-4d35f986bf68" />
+
+- Google Places integration
+- Star ratings and price levels
+
+</details>
+
+---
+
 ## 🔧 API Reference
 
 ### Chat Endpoint
